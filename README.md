@@ -10,7 +10,7 @@ OpenClaw 模型 QPM 限流队列插件
 
 环境要求
 
-OpenClaw 2026.7.1 或更高版本。
+OpenClaw 2026.6.1 或更高版本。
 
 Node.js 22 或更高版本。
 
