@@ -1,0 +1,44 @@
+{
+  "id": "xingyun-qpm",
+  "name": "Xingyun QPM Queue",
+  "description": "Queues Xingyun model calls under a rolling QPM limit and keeps agent runs alive while waiting.",
+  "providers": ["xingyun-qpm"],
+  "activation": {
+    "onCapabilities": ["hook"],
+    "onProviders": ["xingyun-qpm"]
+  },
+  "setup": {
+    "providers": [
+      {
+        "id": "xingyun-qpm",
+        "envVars": ["XINGYUN_API_KEY"]
+      }
+    ]
+  },
+  "providerAuthChoices": [
+    {
+      "provider": "xingyun-qpm",
+      "method": "api-key",
+      "choiceId": "xingyun-qpm-api-key",
+      "choiceLabel": "Xingyun API key",
+      "groupId": "xingyun-qpm",
+      "groupLabel": "Xingyun QPM Queue",
+      "cliFlag": "--xingyun-qpm-api-key",
+      "cliOption": "--xingyun-qpm-api-key <key>",
+      "cliDescription": "Xingyun API key"
+    }
+  ],
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "baseUrl": { "type": "string" },
+      "modelId": { "type": "string" },
+      "requestsPerMinute": { "type": "integer", "minimum": 1, "maximum": 18 },
+      "windowMs": { "type": "integer", "minimum": 1000 },
+      "safetyMs": { "type": "integer", "minimum": 0 },
+      "notify": { "type": "boolean" },
+      "notifyResumed": { "type": "boolean" }
+    }
+  }
+}
